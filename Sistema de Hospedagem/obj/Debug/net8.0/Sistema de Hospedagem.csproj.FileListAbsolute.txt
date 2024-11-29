@@ -1,0 +1,14 @@
+C:\Users\sheil\Documents\Aula C#\Sistema de Hospedagem\bin\Debug\net8.0\Sistema de Hospedagem.exe
+C:\Users\sheil\Documents\Aula C#\Sistema de Hospedagem\bin\Debug\net8.0\Sistema de Hospedagem.deps.json
+C:\Users\sheil\Documents\Aula C#\Sistema de Hospedagem\bin\Debug\net8.0\Sistema de Hospedagem.runtimeconfig.json
+C:\Users\sheil\Documents\Aula C#\Sistema de Hospedagem\bin\Debug\net8.0\Sistema de Hospedagem.dll
+C:\Users\sheil\Documents\Aula C#\Sistema de Hospedagem\bin\Debug\net8.0\Sistema de Hospedagem.pdb
+C:\Users\sheil\Documents\Aula C#\Sistema de Hospedagem\obj\Debug\net8.0\Sistema de Hospedagem.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sheil\Documents\Aula C#\Sistema de Hospedagem\obj\Debug\net8.0\Sistema de Hospedagem.AssemblyInfoInputs.cache
+C:\Users\sheil\Documents\Aula C#\Sistema de Hospedagem\obj\Debug\net8.0\Sistema de Hospedagem.AssemblyInfo.cs
+C:\Users\sheil\Documents\Aula C#\Sistema de Hospedagem\obj\Debug\net8.0\Sistema de Hospedagem.csproj.CoreCompileInputs.cache
+C:\Users\sheil\Documents\Aula C#\Sistema de Hospedagem\obj\Debug\net8.0\Sistema de Hospedagem.dll
+C:\Users\sheil\Documents\Aula C#\Sistema de Hospedagem\obj\Debug\net8.0\refint\Sistema de Hospedagem.dll
+C:\Users\sheil\Documents\Aula C#\Sistema de Hospedagem\obj\Debug\net8.0\Sistema de Hospedagem.pdb
+C:\Users\sheil\Documents\Aula C#\Sistema de Hospedagem\obj\Debug\net8.0\Sistema de Hospedagem.genruntimeconfig.cache
+C:\Users\sheil\Documents\Aula C#\Sistema de Hospedagem\obj\Debug\net8.0\ref\Sistema de Hospedagem.dll
