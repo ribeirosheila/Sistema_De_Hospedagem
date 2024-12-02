@@ -74,7 +74,10 @@ namespace Sistema_de_Hospedagem.Models
         }
         public void Apresentar()
         {
-            Console.WriteLine($"Nome: {NomeCompleto} {Idade}");
+            foreach ( string hospede in listaDeHospedes)
+            {
+                Console.WriteLine(hospede);
+            }
         }
 
         public void ObtainInfoDeHospede() 
@@ -88,6 +91,12 @@ namespace Sistema_de_Hospedagem.Models
             Console.WriteLine("Digite sua idade:");
             Idade = int.Parse(Console.ReadLine());
         }
+        public List<string> listaDeHospedes = new List<string>();
+        public void AddHospedes()
+        {
+             listaDeHospedes.Add(NomeCompleto);
+        }
+        
     }
 
 }

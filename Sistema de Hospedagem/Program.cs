@@ -1,8 +1,10 @@
 ﻿using Sistema_de_Hospedagem.Models;
 
-Pessoa p1 = new Pessoa();
+Pessoa hospede = new Pessoa();
 
-p1.ObtainInfoDeHospede();
+hospede.ObtainInfoDeHospede();
 
-p1.Apresentar();
+hospede.AddHospedes();
+
+hospede.Apresentar();
 
