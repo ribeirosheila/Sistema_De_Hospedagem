@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "pXfTNbA8o1c=",
+  "dgSpecHash": "92sluCZKq/k=",
   "success": true,
   "projectFilePath": "C:\\Users\\sheil\\OneDrive\\Documentos\\GitHub\\Sistema_De_Hospedagem\\Sistema de Hospedagem\\Sistema de Hospedagem.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\sheil\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

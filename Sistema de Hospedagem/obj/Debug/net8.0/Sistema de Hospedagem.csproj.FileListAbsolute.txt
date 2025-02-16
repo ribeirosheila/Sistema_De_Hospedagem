@@ -27,3 +27,6 @@ C:\Users\sheil\OneDrive\Documentos\GitHub\Sistema_De_Hospedagem\Sistema de Hospe
 C:\Users\sheil\OneDrive\Documentos\GitHub\Sistema_De_Hospedagem\Sistema de Hospedagem\obj\Debug\net8.0\Sistema de Hospedagem.pdb
 C:\Users\sheil\OneDrive\Documentos\GitHub\Sistema_De_Hospedagem\Sistema de Hospedagem\obj\Debug\net8.0\Sistema de Hospedagem.genruntimeconfig.cache
 C:\Users\sheil\OneDrive\Documentos\GitHub\Sistema_De_Hospedagem\Sistema de Hospedagem\obj\Debug\net8.0\ref\Sistema de Hospedagem.dll
+C:\Users\sheil\OneDrive\Documentos\GitHub\Sistema_De_Hospedagem\Sistema de Hospedagem\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\sheil\OneDrive\Documentos\GitHub\Sistema_De_Hospedagem\Sistema de Hospedagem\obj\Debug\net8.0\Sistema de Hospedagem.csproj.AssemblyReference.cache
+C:\Users\sheil\OneDrive\Documentos\GitHub\Sistema_De_Hospedagem\Sistema de Hospedagem\obj\Debug\net8.0\Sistema .94BE45B2.Up2Date

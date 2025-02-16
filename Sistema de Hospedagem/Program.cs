@@ -1,10 +1,9 @@
-﻿using Sistema_de_Hospedagem.Models;
+﻿using Sistema_de_Hospedagem;
+using Sistema_de_Hospedagem.Models;
 
-Pessoa hospede = new Pessoa();
+Menu menu = new Menu();
 
-hospede.ObtainInfoDeHospede();
+menu.MenuDeSelecao();
 
-hospede.AddHospedes();
 
-hospede.Apresentar();
 

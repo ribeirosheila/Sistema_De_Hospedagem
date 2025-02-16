@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,16 +12,19 @@ namespace Sistema_de_Hospedagem.Models
         {
 
         }
-        public Pessoa (string nome, string sobrenome, int idade) //só para teste
+        public Pessoa (string nome, string sobrenome, string acompanhado, int idade) //só para teste
         {
             Nome = nome;
             Sobrenome = sobrenome;
             Idade = idade;
+            Acompanhado = acompanhado;
         }
 
         private string _nome;
         private string _sobrenome;
         private int _idade;
+        private string _acompanhado;
+
         public string Nome 
         { 
             get
@@ -51,7 +55,7 @@ namespace Sistema_de_Hospedagem.Models
             {
                 if (value == "")
                 {
-                    throw new ArgumentException("O nome não poder ser vazio");
+                    throw new ArgumentException("O sobrenome não poder ser vazio");
                 }
 
                 _sobrenome = value;
@@ -72,8 +76,30 @@ namespace Sistema_de_Hospedagem.Models
                 _idade = value;
             }
         }
+        
+        public string Acompanhado 
+        {
+            get => _acompanhado;
+
+            set
+            {
+                if (value == "")
+                        {
+                            throw new ArgumentException("Acompanado não poder ser vazio");
+                        }
+
+                        _acompanhado = value;
+            }
+        }
         public void Apresentar()
         {
+            if(listaDeHospedes.Count == 0)
+            {
+                
+                Console.WriteLine("Nenhum hóspede registrado ainda.");
+                return;
+                
+            }
             foreach ( string hospede in listaDeHospedes)
             {
                 Console.WriteLine(hospede);
@@ -82,19 +108,56 @@ namespace Sistema_de_Hospedagem.Models
 
         public void ObtainInfoDeHospede() 
         {
-            Console.WriteLine("Digite seu nome: ");
+            Console.Clear();
+            Menu titulo = new Menu();
+            titulo.Titulo();
+            Console.WriteLine("\nDigite o nome do hóspede: ");
             Nome = Console.ReadLine();
 
-            Console.WriteLine("Digite seu sobrenome: ");
+            Console.WriteLine("\nDigite o sobrenome do hóspede: ");
             Sobrenome = Console.ReadLine();
 
-            Console.WriteLine("Digite sua idade:");
+            Console.WriteLine("\nDigite a idade do hóspede:");
             Idade = int.Parse(Console.ReadLine());
+
+            AddHospedes();
+
         }
-        public List<string> listaDeHospedes = new List<string>();
+        public static List<string> listaDeHospedes = new List<string>();
         public void AddHospedes()
         {
-             listaDeHospedes.Add(NomeCompleto);
+             listaDeHospedes.Add(NomeCompleto + ", " + Idade + " anos");
+        }
+
+        public void QuantidadeDeAcompanhantes()
+        {
+            Console.WriteLine("\nEstá acompanhado? Y/n ");
+            Acompanhado = Console.ReadLine();
+
+            if(Acompanhado == "Y")
+            {   
+                Console.Clear();
+
+                Menu titulo = new Menu();
+                titulo.Titulo();
+
+                Console.WriteLine("\nDigite a quantidade de acompanhantes: ");
+                int qtdDeAcompanhantes = int.Parse(Console.ReadLine());
+
+                for (int i = 0; i < qtdDeAcompanhantes; i++)
+                {   
+                    Console.Clear();
+
+                    Menu titulo1 = new Menu();
+                    titulo1.Titulo();
+
+                    Console.WriteLine($"Digite as informações do acompanhante {i + 1}\n");
+                    Thread.Sleep(2500);
+                    ObtainInfoDeHospede();
+                }
+            }
+            
+
         }
         
     }
