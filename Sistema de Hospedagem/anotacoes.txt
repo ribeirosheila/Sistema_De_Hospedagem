@@ -1,0 +1,8 @@
+1- dar a opção para a pessoa realizar mais uma reserva
+2- dar clear no console antes de apresentar os quartos
+3- Adicionar quantidade de dias que a pessoa deseja ficar
+4- preço de diárias
+5- calculo de valor para pagamento no checkout
+6- programar todo o checkout
+7- adicionar o int no dictionary da Suíte para colocar o preço por Suíte
+8- colocar para o usuário informar a quantidade de dias e multiplicar esse valor pelo preço da diárias

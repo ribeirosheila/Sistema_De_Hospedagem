@@ -1,67 +1,63 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using System.Xml;
-using Newtonsoft.Json;
 
-namespace Sistema_de_Hospedagem.Models
+namespace Sistema_de_Hospedagem.Models;
+
+/// <summary>
+/// Representa uma suíte (quarto) do hotel, com informações sobre tipo, número, status de ocupação
+/// e funcionalidades relacionadas à exibição e listagem de quartos.
+/// </summary>
+public class Suite
 {
-    public class Suite
+    /// <summary>
+    /// Identificador único da suíte.
+    /// </summary>
+    [JsonPropertyName("id")]
+    public string ID { get; set; }
+
+    /// <summary>
+    /// Tipo da suíte (ex: Standard, Luxo, Presidencial).
+    /// </summary>
+    [JsonPropertyName("Tipo de Quarto")]
+    public string Quarto { get; set; }
+
+    /// <summary>
+    /// Número da suíte dentro do hotel.
+    /// </summary>
+    [JsonPropertyName("Numero do Quarto")]
+    public int NumeroDoQuarto { get; set; }
+
+    /// <summary>
+    /// Status atual da suíte (ex: Disponível, Ocupado).
+    /// </summary>
+    [JsonPropertyName("Status")]
+    public string Status { get; set; }
+
+    /// <summary>
+    /// Obtém e exibe a lista de suítes disponíveis no sistema.
+    /// Utiliza a API para buscar os dados e exibe cada suíte no console.
+    /// </summary>
+    public async Task ObterListaDeQuartos()
     {
-           public static Dictionary<string, bool> suites = new Dictionary<string, bool>();
-           public Suite()
-           {
-                if (suites.Count == 0)
-                AddSuite();
-           }
-
-           public void AddSuite()
-           {
-                suites["Single Room"] = true;
-                suites["Twin Room"] = true;
-                suites["Standard"] = true;
-                suites["Master"] = true;
-                suites["Deluxe"] = true;
-           }
-            public void SuitesStatus()
+        try
+        {
+            var suites = await APIServer.GetSuitesAsync();
+            foreach (var suite in suites)
             {
-
-                Thread.Sleep(2000);
-
-                Console.WriteLine("\nStatus das suítes:");
-                foreach (var suite in suites)
-                {
-                    string status = suite.Value ? "Disponível" : "Ocupado";
-                    Console.WriteLine($"{suite.Key}: {status}");
-                }
+                suite.ExibirQuartos();
             }
-            public void SelecionarSuite()
-            {
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Houve um problema com: {ex.Message}");
+        }
+    }
 
-                SuitesStatus();
-
-                Console.WriteLine("\nDigite o nome da suíte que deseja ocupar:");
-                string suiteSelecionada = Console.ReadLine();
-
-                if (suites.ContainsKey(suiteSelecionada))
-                {
-                    if (suites[suiteSelecionada])
-                    {
-                        suites[suiteSelecionada] = false;
-                        Console.WriteLine($"A suíte {suiteSelecionada} foi reservada.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Essa suíte já está ocupada.");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Suíte não encontrada.");
-                }
-            }
+    /// <summary>
+    /// Exibe no console as informações da suíte atual (ID, tipo, número e status).
+    /// </summary>
+    public void ExibirQuartos()
+    {
+        Console.WriteLine($"Id {ID} | Tipo de Quarto: {Quarto} | Número: {NumeroDoQuarto} | Status: {Status}");
     }
 }
+

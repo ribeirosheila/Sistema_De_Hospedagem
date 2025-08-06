@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Sistema_de_Hospedagem.Models
 {
+    /// <summary>
+    /// Representa uma pessoa (hóspede) no sistema de hospedagem, com nome, idade e informações de acompanhamento.
+    /// </summary>
     public class Pessoa
     {
-        public Pessoa() // construtor que está sendo utilizado
-        {
+        public Pessoa() { }
 
-        }
-        public Pessoa (string nome, string sobrenome, string acompanhado, int idade) //só para teste
+        public Pessoa(string nome, string sobrenome, string acompanhado, int idade)
         {
             Nome = nome;
             Sobrenome = sobrenome;
@@ -25,92 +26,112 @@ namespace Sistema_de_Hospedagem.Models
         private int _idade;
         private string _acompanhado;
 
-        public string Nome 
-        { 
+        public string Nome
+        {
             get
             {
                 if (!string.IsNullOrEmpty(_nome))
                     return char.ToUpper(_nome[0]) + _nome.Substring(1);
                 return _nome;
-            } 
+            }
             set
             {
-                if (value == "")
-                {
-                    throw new ArgumentException("O nome não poder ser vazio");
-                }
-
+                if (string.IsNullOrEmpty(value))
+                    throw new ArgumentException("O nome não pode ser vazio");
                 _nome = value;
-            } 
+            }
         }
-        public string Sobrenome 
-        { 
+
+        public string Sobrenome
+        {
             get
             {
                 if (!string.IsNullOrEmpty(_sobrenome))
                     return char.ToUpper(_sobrenome[0]) + _sobrenome.Substring(1);
                 return _sobrenome;
-            } 
+            }
             set
             {
-                if (value == "")
-                {
-                    throw new ArgumentException("O sobrenome não poder ser vazio");
-                }
-
+                if (string.IsNullOrEmpty(value))
+                    throw new ArgumentException("O sobrenome não pode ser vazio");
                 _sobrenome = value;
-            } 
+            }
         }
-        public string NomeCompleto => $"{Nome} {Sobrenome}";
-        public int Idade 
-        { 
-            get => _idade;
 
+        public string NomeCompleto => $"{Nome} {Sobrenome}";
+
+        public int Idade
+        {
+            get => _idade;
             set
             {
                 if (value < 0)
-                {
                     throw new ArgumentException("A idade não pode ser menor que zero");
-                }
-
                 _idade = value;
             }
         }
-        
-        public string Acompanhado 
+
+        public string Acompanhado
         {
             get => _acompanhado;
-
             set
             {
-                if (value == "")
-                        {
-                            throw new ArgumentException("Acompanado não poder ser vazio");
-                        }
-
-                        _acompanhado = value;
+                if (string.IsNullOrEmpty(value))
+                    throw new ArgumentException("Acompanhado não pode ser vazio");
+                _acompanhado = value;
             }
         }
+
+        /// <summary>
+        /// Guarda o ID do quarto reservado por este hóspede.
+        /// </summary>
+        public string QuartoReservado { get; set; }
+
+        /// <summary>
+        /// Lista de hóspedes ativos no sistema.
+        /// </summary>
+        public static List<Pessoa> listaDeHospedes = new List<Pessoa>();
+
+        /// <summary>
+        /// Adiciona a pessoa atual à lista de hóspedes, evitando duplicações.
+        /// </summary>
+        public void AddHospedes()
+        {
+            bool jaExiste = listaDeHospedes.Any(p => 
+                p.NomeCompleto == this.NomeCompleto && 
+                p.Idade == this.Idade && 
+                p.QuartoReservado == this.QuartoReservado);
+
+            if (!jaExiste)
+                listaDeHospedes.Add(this);
+        }
+
+        /// <summary>
+        /// Exibe todos os hóspedes da lista.
+        /// </summary>
         public void Apresentar()
         {
-            if(listaDeHospedes.Count == 0)
+            if (listaDeHospedes.Count == 0)
             {
-                
                 Console.WriteLine("Nenhum hóspede registrado ainda.");
                 return;
-                
             }
-            foreach ( string hospede in listaDeHospedes)
+
+            foreach (Pessoa hospede in listaDeHospedes)
             {
-                Console.WriteLine(hospede);
+                Console.WriteLine($"{hospede.NomeCompleto}, {hospede.Idade} anos | id: {hospede.QuartoReservado}");
             }
         }
 
-        public void ObtainInfoDeHospede() 
+        /// <summary>
+        /// Solicita os dados de um hóspede via console e adiciona na lista.
+        /// </summary>
+        public void ObtainInfoDeHospede()
         {
             Console.Clear();
             Menu titulo = new Menu();
             titulo.Titulo();
+
             Console.WriteLine("\nDigite o nome do hóspede: ");
             Nome = Console.ReadLine();
 
@@ -121,23 +142,19 @@ namespace Sistema_de_Hospedagem.Models
             Idade = int.Parse(Console.ReadLine());
 
             AddHospedes();
-
-        }
-        public static List<string> listaDeHospedes = new List<string>();
-        public void AddHospedes()
-        {
-             listaDeHospedes.Add(NomeCompleto + ", " + Idade + " anos");
         }
 
+        /// <summary>
+        /// Pergunta se está acompanhado e coleta dados dos acompanhantes.
+        /// </summary>
         public void QuantidadeDeAcompanhantes()
         {
-            Console.WriteLine("\nEstá acompanhado? Y/n ");
+            Console.WriteLine("\nEstá acompanhado? s/n ");
             Acompanhado = Console.ReadLine();
 
-            if(Acompanhado == "Y")
-            {   
+            if (Acompanhado == "s")
+            {
                 Console.Clear();
-
                 Menu titulo = new Menu();
                 titulo.Titulo();
 
@@ -145,21 +162,28 @@ namespace Sistema_de_Hospedagem.Models
                 int qtdDeAcompanhantes = int.Parse(Console.ReadLine());
 
                 for (int i = 0; i < qtdDeAcompanhantes; i++)
-                {   
+                {
                     Console.Clear();
-
                     Menu titulo1 = new Menu();
                     titulo1.Titulo();
 
                     Console.WriteLine($"Digite as informações do acompanhante {i + 1}\n");
                     Thread.Sleep(2500);
-                    ObtainInfoDeHospede();
+
+                    Pessoa acompanhante = new Pessoa();
+                    acompanhante.ObtainInfoDeHospede();
+                    acompanhante.QuartoReservado = this.QuartoReservado;
+                    acompanhante.AddHospedes();
                 }
             }
-            
-
         }
-        
-    }
 
+        /// <summary>
+        /// Remove todos os hóspedes associados a um determinado quarto.
+        /// </summary>
+        public static void RemoverHospedesDoQuarto(string idQuarto)
+        {
+            listaDeHospedes.RemoveAll(p => p.QuartoReservado == idQuarto);
+        }
+    }
 }

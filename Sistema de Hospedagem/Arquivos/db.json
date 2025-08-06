@@ -1,0 +1,34 @@
+{
+  "quartos": [
+    {
+      "id": "1",
+      "Tipo de Quarto": "Single Room",
+      "Numero do Quarto": 101,
+      "Status": "Ocupado"
+    },
+    {
+      "id": "2",
+      "Tipo de Quarto": "Twin Room",
+      "Numero do Quarto": 102,
+      "Status": "Disponível"
+    },
+    {
+      "id": "3",
+      "Tipo de Quarto": "Standard",
+      "Numero do Quarto": 103,
+      "Status": "Disponível"
+    },
+    {
+      "id": "4",
+      "Tipo de Quarto": "Master",
+      "Numero do Quarto": 104,
+      "Status": "Disponível"
+    },
+    {
+      "id": "5",
+      "Tipo de Quarto": "Deluxe",
+      "Numero do Quarto": 105,
+      "Status": "Disponível"
+    }
+  ]
+}
