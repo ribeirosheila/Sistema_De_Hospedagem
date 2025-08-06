@@ -26,12 +26,15 @@ Este projeto é uma aplicação de console desenvolvida em C# que simula um sist
    git clone https://github.com/seu-usuario/seu-repositorio.git
 
 2. Instale o Json Server (caso não tenha ainda):
+   ```bash
    npm install -g json-server
    
 3. Inicie o Json Server com o arquivo db.json:
+   ```bash
    json-server --watch db.json
 
 4. Compile e execute o projeto no VS Code ou usando o terminal:
+   ```bash
    dotnet run
 
 ## Organização do projeto
